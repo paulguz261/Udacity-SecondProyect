@@ -4,7 +4,7 @@
 This proyect analyzes disaster data from [Figure Eight] (https://appen.com/) in order to classify them in different categories, that are already stated in a file.
 
 The proyect uses  
-1. **SQLite** database for it implementation
+1. **SQLite** database 
 2. pickle to store the trained model
 3. a web application to retrieve data and show classification results
 
