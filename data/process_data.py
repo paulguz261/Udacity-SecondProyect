@@ -20,7 +20,7 @@ def load_data(messages_filepath, categories_filepath):
     df_categories = pd.read_csv(categories_filepath)
     
     
-    return pd.merge(messages,categories,on='id')
+    return pd.merge(df_messages,df_categories,on='id')
 
 
 def clean_data(df):
@@ -66,7 +66,7 @@ def save_data(df, database_filename):
         save the dataframe into a indicated sqlite database
     '''
 
-    engine = create_engine(database_filename)
+    engine = create_engine('sqlite:///'+database_filename)
     df.to_sql('messages', engine, index=False)
     pass  
 
@@ -76,7 +76,7 @@ def main():
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]
 
-        print('Loading data...\n    MESSAGES: {}\n    CATEGORIES: {}'
+        print('Loading data...\n    MESSAGES: {}\n    CATEGORIES: {}' 
               .format(messages_filepath, categories_filepath))
         df = load_data(messages_filepath, categories_filepath)
 
