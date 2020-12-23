@@ -44,6 +44,25 @@ def index():
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
+    # new graphs
+    categories_sum = df.loc[:,['request', 'offer',
+           'aid_related', 'medical_help', 'medical_products',
+           'search_and_rescue', 'security', 'military', 'child_alone', 'water',
+           'food', 'shelter', 'clothing', 'money', 'missing_people',
+           'refugees', 'death', 'other_aid', 'infrastructure_related',
+           'transport', 'buildings', 'electricity', 'tools', 'hospitals',
+           'shops', 'aid_centers', 'other_infrastructure', 'weather_related',
+           'floods', 'storm', 'fire', 'earthquake', 'cold', 'other_weather',
+           'direct_report']].sum()
+
+    top_5_categories = categories_sum.sort_values(ascending=False).head(5)
+    last_5_categories = categories_sum.sort_values().head(5)
+
+    top_5_x = top_5_categories.index.values
+    top_5_y = top_5_categories.values
+
+    last_5_x = last_5_categories.index.values
+    last_5_y = last_5_categories.values    
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
@@ -62,6 +81,42 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=top_5_x,
+                    y=top_5_y
+                )
+            ],
+
+            'layout': {
+                'title': 'Top 5 of messages Categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Categories"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=last_5_x,
+                    y=last_5_y
+                )
+            ],
+
+            'layout': {
+                'title': 'Last 5 of messages Categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Categories"
                 }
             }
         }
