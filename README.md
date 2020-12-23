@@ -1,21 +1,24 @@
 # Disaster Response Pipeline Project
 
-### Introduction:
-This proyect analyzes disaster data from [Figure Eight] (https://appen.com/) in order to classify them in different categories, that are already stated in a file.
+### Summary:
+The following proyect contains the steps to train a model that classifies disaster messages data from [Figure Eight] (https://appen.com/) into 36 different categories. The proyect is divided into 3 main steps. 
 
+1. data cleaning and preparation
+2. training and tunning a model
+3. depployment of a webpage to classify new entries
+
+#### Technologies
 The proyect uses  
 1. **SQLite** database 
 2. pickle to store the trained model
 3. a web application to retrieve data and show classification results
 
-The implementation does not take into account model calibration or finding hiperparameters
-
-### Model:
+#### Model Training
 The model steps are the following
 1. applies text transformation to the messages, to tokenize and find tfidf
     1.1. Applies a Count of the terms in the message by CountVectorizer
     1.2. Transform a count matrix to a tf-idf representation 
-2. use a Random Forest and a MultiOutputClassifier to train model
+2. perform a grid search on Random Forest and a MultiOutputClassifier to train model
 
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
@@ -30,7 +33,7 @@ The model steps are the following
 
 3. Go to http://0.0.0.0:3001/
 
-### Project File structure:
+### Files:
 Three folders 
 * **app**
     * **templates**
