@@ -57,7 +57,9 @@ def clean_data(df):
 
     # discar duplicates
     df = df[~df['id'].duplicated(keep='first')]
-        
+
+    df.related.replace(2,1,inplace=True)
+
     return df
 
 
@@ -67,7 +69,7 @@ def save_data(df, database_filename):
     '''
 
     engine = create_engine('sqlite:///'+database_filename)
-    df.to_sql('messages', engine, index=False)
+    df.to_sql('messages', engine, index=False, if_exists='replace')
     pass  
 
 
