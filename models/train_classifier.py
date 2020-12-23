@@ -91,7 +91,15 @@ def build_model(X_train, Y_train):
     ('clf',clf_multi)   
     ])
 
-    cv = pipeline.fit(X_train,Y_train)
+    parameters = {
+        #'clf__estimator__n_estimators': [50, 100, 200],
+        #'clf__estimator__min_samples_split': [2, 3, 4],
+        'clf__estimator__n_estimators': [100, 150],
+    }
+
+    cv = GridSearchCV(pipeline, param_grid=parameters,verbose=3)
+    cv.fit(X_train,Y_train)
+    print("\nBest Parameters:", cv.best_params_)     
 
     return cv
 
