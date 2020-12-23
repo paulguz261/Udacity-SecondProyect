@@ -5,7 +5,7 @@ The following proyect contains the steps to train a model that classifies disast
 
 1. data cleaning and preparation
 2. training and tunning a model
-3. depployment of a webpage to classify new entries
+3. deployment of a webpage to classify new entries
 
 #### Technologies
 The proyect uses  
@@ -16,7 +16,9 @@ The proyect uses
 #### Model Training
 The model steps are the following
 1. applies text transformation to the messages, to tokenize and find tfidf
+
     1.1. Applies a Count of the terms in the message by CountVectorizer
+    
     1.2. Transform a count matrix to a tf-idf representation 
 2. perform a grid search on Random Forest and a MultiOutputClassifier to train model
 
