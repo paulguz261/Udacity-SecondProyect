@@ -48,4 +48,6 @@ Three folders
     * process_data.py: script to read the csv files pre process, join them and save the resulting info in a Sqlite database
 * **model**
     * train_calssifier.py: script to create, train the model and save as pickle file
-    *
+
+# Proyect link
+[proyect](https://github.com/paulguz261/Udacity-SecondProyect)
